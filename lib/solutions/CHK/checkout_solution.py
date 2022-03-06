@@ -56,10 +56,10 @@ def checkout(skus):
         print(f'item: {item}, amount: {amount}')
         special_offer = None
         try:
-            if sorted(prices[item].get('special_offer', None), key=sort_inside_value):
-                for offer in prices[item].get('special_offer', None):
+            if prices[item].get('special_offer', None):
+                for offer in sorted(prices[item].get('special_offer', None), key=sort_inside_value, reverse=True):
                     if amount >= offer["offer"][0]:
-                        special_offer = offer["offer"]
+                        special_offer = offer
                         break
         except KeyError:
             # Item not in the price table an offers
@@ -70,10 +70,11 @@ def checkout(skus):
 
         if has_special_offer:           
             special_offer_amounts = (
-                int(amount/special_offer[0]),
-                amount%special_offer[0]
+                int(amount/special_offer['offer'][0]),
+                amount%special_offer['offer'][0]
             ) 
-            special_offer_price = (special_offer_amounts[0] * special_offer[1]) + (special_offer_amounts[1] * prices[item]['price'])
+            special_offer_price = (special_offer_amounts[0] * special_offer['offer'][1]) \
+                + (special_offer_amounts[1] * prices[item]['price'])
         price = prices[item]['price'] * amount if not has_special_offer else special_offer_price
         print('price', price)
         total_price += price
@@ -81,6 +82,7 @@ def checkout(skus):
     return total_price
 
     
+
 
 
 
