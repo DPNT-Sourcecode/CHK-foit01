@@ -82,7 +82,7 @@ def checkout(skus):
     for item, amount in basket.items():
 
         print(f'item: {item}, amount: {amount}')
-        special_offer = None
+        special_offers = []
         try:
             if PRICES[item].get('special_offer', None):
                 for offer in sorted(
@@ -91,23 +91,24 @@ def checkout(skus):
                     reverse=True
                 ):
                     if amount >= offer["offer"][0]:
-                        special_offer = offer
+                        special_offers.append(offer)
                         break
         except KeyError:
             # Item not in the price table an offers
             return -1
-        print(f'special_offer: {special_offer}')
-        has_special_offer = True if special_offer and special_offer['type'] == 'cumulative' else False
+        print(f'special_offer: {special_offers}')
+        has_special_offer = True if special_offers and special_offers['type'] == 'cumulative' else False
         print(f'has_special_offer: {has_special_offer}')
 
         if has_special_offer:
-            special_offer_amounts = (
-                int(amount/special_offer['offer'][0]),
-                amount%special_offer['offer'][0]
-            ) 
-            print(f'special offer amount: {special_offer_amounts}')
-            special_offer_price = (special_offer_amounts[0] * special_offer['offer'][1]) \
-                + (special_offer_amounts[1] * PRICES[item]['price'])
+            for special_offer in special_offers:
+                special_offer_amounts = (
+                    int(amount/special_offer['offer'][0]),
+                    amount%special_offer['offer'][0]
+                ) 
+                print(f'special offer amount: {special_offer_amounts}')
+                special_offer_price = (special_offer_amounts[0] * special_offer['offer'][1]) \
+                    + (special_offer_amounts[1] * PRICES[item]['price'])
         price = PRICES[item]['price'] * amount if not has_special_offer else special_offer_price
         print('price', price)
         total_price += price
@@ -115,4 +116,5 @@ def checkout(skus):
     return total_price
 
     
+
 
