@@ -92,12 +92,12 @@ def checkout(skus):
                 ):
                     if amount >= offer["offer"][0]:
                         special_offers.append(offer)
-                        break
+                        basket[item] -= offer["offer"][0]
         except KeyError:
             # Item not in the price table an offers
             return -1
         print(f'special_offer: {special_offers}')
-        has_special_offer = True if special_offers and special_offers['type'] == 'cumulative' else False
+        has_special_offer = True if special_offers else False
         print(f'has_special_offer: {has_special_offer}')
 
         if has_special_offer:
@@ -116,5 +116,6 @@ def checkout(skus):
     return total_price
 
     
+
 
 
