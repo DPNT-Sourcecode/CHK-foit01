@@ -5,11 +5,10 @@
 def sort_inside_value(elem):
     return elem['offer'][0]
 
+def set_new_basket(skus, )
+
 def checkout(skus):
     total_price = 0
-    basket = {e: skus.count(e) for e in set(skus)}
-    print()
-    print('basket', basket)
     prices = {
         'A': {
             'price': 50,
@@ -51,6 +50,12 @@ def checkout(skus):
             ]
         }
     }
+    free_offers_list = ['E']
+
+    basket = {e: skus.count(e) for e in set(skus)}
+    print()
+    print('basket', basket)
+
     for item, amount in basket.items():
 
         print(f'item: {item}, amount: {amount}')
@@ -82,6 +87,7 @@ def checkout(skus):
     return total_price
 
     
+
 
 
 
