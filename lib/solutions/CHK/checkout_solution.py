@@ -8,18 +8,30 @@ def checkout(skus):
     prices = {
         'A': {
             'price': 50,
-            'special_offer': [3, 130]
+            'special_offer': [
+"type" : "cumulative",
+                "offers": (
+                    [3, 130],
+                    
+                )
+            ]
+                
+            
         },
         'B': {
             'price': 30,
-            'special_offer': [2, 45]
+            'special_offer': {
+                "type" : "cumulative",
+                "offers": (
+                    [2, 45]
+                )
+            }
         },
         'C': {
             'price': 20
         },
         'D': {'price': 15},
         'E': {'price': 40}, 'special_offer': []
-
     }
     for item, amount in basket.items():
         try:
@@ -41,6 +53,7 @@ def checkout(skus):
     return total_price
 
     
+
 
 
 
