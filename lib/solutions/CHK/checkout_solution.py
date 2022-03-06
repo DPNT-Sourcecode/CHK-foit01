@@ -48,7 +48,8 @@ def checkout(skus):
     }
     for item, amount in basket.items():
         try:
-            special_offer = prices[item].get('special_offer', None)
+            for offer in prices[item].get('special_offer', None):
+                special_offer = offer if amount >= offer[0] else None
         except KeyError:
             # Item not in the price table an offers
             return -1
@@ -66,10 +67,4 @@ def checkout(skus):
     return total_price
 
     
-
-
-
-
-
-
 
