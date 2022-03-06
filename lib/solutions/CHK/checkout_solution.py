@@ -49,22 +49,23 @@ def sort_inside_value(elem):
 def set_new_basket(skus, free_offers_list):
     for free_offer_item in free_offers_list:
         for free_offer in sorted(
-            PRICES[free_offer]['special_offer'],
+            PRICES[free_offer_item]['special_offer'],
             key=sort_inside_value,
             reverse=True
         ):
             if skus.count(free_offer_item) > free_offer['offer'][0]:
                 (quantity, free_prod) = free_offer['offer']
                 break
-            skus = ''.join(sorted(skus)).replace(quantity*free_prod, '')
+            skus = ''.join(sorted(skus)).replace(free_prod, '')
     return skus
 
 def checkout(skus):
     total_price = 0
     free_offers_list = ['E']
 
+    print('original skus', skus)
     skus = set_new_basket(skus, free_offers_list)
-
+    print('new skus', skus)
     basket = {e: skus.count(e) for e in set(skus)}
     print()
     print('basket', basket)
@@ -104,6 +105,7 @@ def checkout(skus):
     return total_price
 
     
+
 
 
 
