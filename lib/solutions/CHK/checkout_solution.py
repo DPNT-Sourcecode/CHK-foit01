@@ -43,7 +43,7 @@ def checkout(skus):
             'special_offer': [
                 {
                     "type" : "free",
-                    "offer": [2, 45]
+                    "offer": [1, 'B']
                 }              
             ]
         }
@@ -57,6 +57,7 @@ def checkout(skus):
                 for offer in prices[item].get('special_offer', None):
                     if amount >= offer["offer"][0]:
                         special_offer = offer["offer"]
+                        break
         except KeyError:
             # Item not in the price table an offers
             return -1
@@ -70,11 +71,13 @@ def checkout(skus):
                 amount%special_offer[0]
             ) 
             special_offer_price = (special_offer_amounts[0] * special_offer[1]) + (special_offer_amounts[1] * prices[item]['price'])
-
-        total_price += prices[item]['price'] * amount if not has_special_offer else special_offer_price
+        price = prices[item]['price'] * amount if not has_special_offer else special_offer_price
+        print('price', price)
+        total_price += price
 
     return total_price
 
     
+
 
 
