@@ -53,8 +53,10 @@ def set_new_basket(skus, free_offers_list):
             key=sort_inside_value,
             reverse=True
         ):
-            
-            (quantity, free_prod) = free_offer['offer'][0]
+            if skus.count(free_offer_item) > free_offer['offer'][0]:
+                (quantity, free_prod) = free_offer['offer']
+                break
+            skus = ''.join(sorted(skus)).replace(quantity*free_prod, '')
     return skus
 
 def checkout(skus):
@@ -102,5 +104,6 @@ def checkout(skus):
     return total_price
 
     
+
 
 
