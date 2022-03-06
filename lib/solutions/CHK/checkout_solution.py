@@ -14,6 +14,7 @@ def checkout(skus):
 
     }
     for item, amount in basket.items():
+        print(item, amount)
         try:
             special_offer = prices[item]['special_offer']
             print(special_offer)
@@ -21,14 +22,18 @@ def checkout(skus):
             print(has_special_offer)
             
             special_offer_amounts = (int(amount/special_offer[0]), amount%special_offer[0])
+            print(special_offer_amounts)
             special_offer_price = (special_offer_amounts[0] * special_offer[1]) + (special_offer_amounts[1] * prices[item]['price'])
+            print(special_offer_price)
             total_price += prices[item]['price'] if not has_special_offer else special_offer_price
         except KeyError:
-            # Noe special offers available
-            pass
-        total_price += prices[item]['price'] * amount
+            # No special offers available
+            total_price += prices[item]['price'] * amount
+
+    print(total_price)
     return total_price
 
     
+
 
 
