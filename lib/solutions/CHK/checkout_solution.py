@@ -14,7 +14,11 @@ def checkout(skus):
 
     }
     for item, amount in basket.items():
-        special_offer = prices[item].get('special_offer', None)
+        try:
+            special_offer = prices[item].get('special_offer', None)
+        except KeyError:
+            # Item not in the price table an offers
+            return -1
         has_special_offer = True if special_offer else False
 
         if has_special_offer:           
