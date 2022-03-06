@@ -2,6 +2,9 @@
 
 # noinspection PyUnusedLocal
 # skus = unicode string
+def sort_inside_value(elem):
+    return elem['offer'][0]
+
 def checkout(skus):
     total_price = 0
     basket = {e: skus.count(e) for e in set(skus)}
@@ -13,11 +16,11 @@ def checkout(skus):
             'special_offer': [
                 {
                     "type" : "cumulative",
-                    "offer": [5, 200]
+                    "offer": [3, 130]
                 },
                 {
                     "type" : "cumulative",
-                    "offer": [3, 130]
+                    "offer": [5, 200]
                 }                
             ]
                 
@@ -43,7 +46,7 @@ def checkout(skus):
             'special_offer': [
                 {
                     "type" : "free",
-                    "offer": [1, 'B']
+                    "offer": [2, 'B']
                 }              
             ]
         }
@@ -53,7 +56,7 @@ def checkout(skus):
         print(f'item: {item}, amount: {amount}')
         special_offer = None
         try:
-            if prices[item].get('special_offer', None):
+            if sorted(prices[item].get('special_offer', None), key=sort_inside_value):
                 for offer in prices[item].get('special_offer', None):
                     if amount >= offer["offer"][0]:
                         special_offer = offer["offer"]
@@ -78,6 +81,7 @@ def checkout(skus):
     return total_price
 
     
+
 
 
 
