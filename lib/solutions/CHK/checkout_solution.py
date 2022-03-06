@@ -2,14 +2,7 @@
 
 # noinspection PyUnusedLocal
 # skus = unicode string
-def sort_inside_value(elem):
-    return elem['offer'][0]
-
-def set_new_basket(skus, )
-
-def checkout(skus):
-    total_price = 0
-    prices = {
+PRICES = {
         'A': {
             'price': 50,
             'special_offer': [
@@ -50,7 +43,17 @@ def checkout(skus):
             ]
         }
     }
+def sort_inside_value(elem):
+    return elem['offer'][0]
+
+def set_new_basket(skus, free_offers_list):
+    return skus
+
+def checkout(skus):
+    total_price = 0
     free_offers_list = ['E']
+
+    skus = set_new_basket(skus, free_offers_list)
 
     basket = {e: skus.count(e) for e in set(skus)}
     print()
@@ -61,8 +64,8 @@ def checkout(skus):
         print(f'item: {item}, amount: {amount}')
         special_offer = None
         try:
-            if prices[item].get('special_offer', None):
-                for offer in sorted(prices[item].get('special_offer', None), key=sort_inside_value, reverse=True):
+            if PRICES[item].get('special_offer', None):
+                for offer in sorted(PRICES[item].get('special_offer', None), key=sort_inside_value, reverse=True):
                     if amount >= offer["offer"][0]:
                         special_offer = offer
                         break
@@ -79,14 +82,15 @@ def checkout(skus):
                 amount%special_offer['offer'][0]
             ) 
             special_offer_price = (special_offer_amounts[0] * special_offer['offer'][1]) \
-                + (special_offer_amounts[1] * prices[item]['price'])
-        price = prices[item]['price'] * amount if not has_special_offer else special_offer_price
+                + (special_offer_amounts[1] * PRICES[item]['price'])
+        price = PRICES[item]['price'] * amount if not has_special_offer else special_offer_price
         print('price', price)
         total_price += price
 
     return total_price
 
     
+
 
 
 
