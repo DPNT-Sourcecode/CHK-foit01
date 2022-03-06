@@ -89,10 +89,10 @@ def checkout(skus):
             # Item not in the price table an offers
             return -1
         print(f'special_offer: {special_offer}')
-        has_special_offer = True if special_offer else False
+        has_special_offer = True if special_offer and special_offer['type'] == 'cumulative' else False
         print(f'has_special_offer: {has_special_offer}')
 
-        if has_special_offer and special_offer['type'] == 'cumulative':           
+        if has_special_offer:
             special_offer_amounts = (
                 int(amount/special_offer['offer'][0]),
                 amount%special_offer['offer'][0]
@@ -107,6 +107,7 @@ def checkout(skus):
     return total_price
 
     
+
 
 
 
