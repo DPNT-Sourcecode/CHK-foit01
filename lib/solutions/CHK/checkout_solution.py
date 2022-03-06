@@ -3,6 +3,7 @@
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
+    total_price = 0
     basket = {e: skus.count(e) for e in set(skus)}
     prices = {
         'A': {'price': 50, 'special_offer': [3, 130]},
@@ -11,5 +12,9 @@ def checkout(skus):
         'D': {'price': 15}
 
     }
-    return basket
+    for item, amount in basket.items():
+        total_price += prices[item]['price'] * amount
+    return total_price
+
+    
 
