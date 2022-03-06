@@ -5,3 +5,4 @@ def test_checkout_solution():
     assert checkout_solution.checkout('BBBB') == 90
     assert checkout_solution.checkout('CCCCAAABB') == 255
     assert checkout_solution.checkout('XXXX') == -1
+    assert checkout_solution.checkout('AAAAA') == 200
