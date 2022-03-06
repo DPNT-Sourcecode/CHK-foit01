@@ -47,6 +47,10 @@ def sort_inside_value(elem):
     return elem['offer'][0]
 
 def set_new_basket(skus, free_offers_list):
+    for free_offer_item in free_offers_list:
+        for free_offer in PRICES[free_offer]['special_offer']:
+            
+            (quantity, free_prod) = free_offer['offer'][0]
     return skus
 
 def checkout(skus):
@@ -65,7 +69,11 @@ def checkout(skus):
         special_offer = None
         try:
             if PRICES[item].get('special_offer', None):
-                for offer in sorted(PRICES[item].get('special_offer', None), key=sort_inside_value, reverse=True):
+                for offer in sorted(
+                    PRICES[item].get('special_offer', None),
+                    key=sort_inside_value,
+                    reverse=True
+                ):
                     if amount >= offer["offer"][0]:
                         special_offer = offer
                         break
@@ -90,10 +98,4 @@ def checkout(skus):
     return total_price
 
     
-
-
-
-
-
-
 
