@@ -63,12 +63,12 @@ def set_new_basket(skus, free_offers_list):
 def checkout(skus):
     total_price = 0
     free_offers_list = ['E']
-
+    print()
     print('original skus', skus)
     skus = set_new_basket(skus, free_offers_list)
     print('new skus', skus)
     basket = {e: skus.count(e) for e in set(skus)}
-    print()
+
     print('basket', basket)
 
     for item, amount in basket.items():
@@ -106,4 +106,5 @@ def checkout(skus):
     return total_price
 
     
+
 
