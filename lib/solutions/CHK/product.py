@@ -25,3 +25,6 @@ class Product:
 
     def __repr__(self):
         return f'{self.name} (£{self.price})'
+
+    def reduce_quantity(self, quantity):
+        self.quantity -= quantity
