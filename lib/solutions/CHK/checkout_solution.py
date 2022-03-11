@@ -15,9 +15,12 @@ def checkout(skus):
     promotions = create_promotions()
 
     basket = Basket(products, promotions)
-    print(products)
+    
+    basket.calculate_free()
+    
     
     return basket.get_total_price
 
     
+
 

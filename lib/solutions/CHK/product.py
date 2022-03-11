@@ -21,10 +21,10 @@ class Product:
         self.quantity = quantity
 
     def __str__(self):
-        return f'{self.name} (£{self.price})'
+        return f'{self.quantity}{self.name} (£{self.price})'
 
     def __repr__(self):
-        return f'{self.name} (£{self.price})'
+        return f'{self.quantity}{self.name} (£{self.price})'
 
     def reduce_quantity(self, quantity):
         new_qty = self.quantity - quantity
