@@ -53,11 +53,14 @@ class Basket:
                             prod.promotion.qualifying_qty
                         )
                     num_promotions = prod.quantity // c_prom.qualifying_qty
+                    if num_promotions:
+                        prod.apply_promotion(c_prom)
                     total_discount += num_promotions * c_prom.discount_qty
         print(f'total discount {total_discount}')
         return total_discount
                     
                     
+
 
 
 
