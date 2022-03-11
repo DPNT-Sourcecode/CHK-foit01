@@ -69,4 +69,4 @@ class Promotion:
         if self.type == 'free':
             return f'F Prom: {self.discount_qty}{self.discount_product} free per {self.qualifying_qty}{self.qualifying_product}'
         elif self.type == 'cumulative':
-            return f'C Prom: {self.discount_qty}£ free per {self.qualifying_qty}{self.qualifying_product}'
+            return f'C Prom: {self.discount_qty}£ discount per {self.qualifying_qty}{self.qualifying_product}'

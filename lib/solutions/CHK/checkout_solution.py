@@ -10,6 +10,7 @@ def checkout(skus):
     products = create_products(skus)
     promotions = create_promotions()
     print(products)
+    print(promotions)
     
     return 0
 
