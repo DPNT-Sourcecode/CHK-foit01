@@ -36,6 +36,7 @@ class Basket:
 
                 num_promotions = prod.quantity // f_prom.qualifying_qty
                 reduce_number = num_promotions * f_prom.discount_qty
+                print('reducer qty number', reduce_number)
                 self.reduce_product_quantity(prod, reduce_number)
 
     @property
@@ -51,4 +52,5 @@ class Basket:
         return total_discount
                     
                     
+
 
