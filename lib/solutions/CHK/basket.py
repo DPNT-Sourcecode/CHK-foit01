@@ -23,4 +23,3 @@ class Basket:
     @property
     def get_total_price(self):
         return sum([p.quantity * p.price for p in self.products])
-

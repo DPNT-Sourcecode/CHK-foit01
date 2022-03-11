@@ -28,6 +28,16 @@ PROMOTIONS = [
         'discount_qty': 1
     },
 ]
+def create_promotions():
+    return [
+        Promotion(
+            p['qualifying_product'], 
+            p['qualifying_qty'], 
+            p['type'],
+            p['discount_product'], 
+            p['discount_qty']
+        ) for p in PROMOTIONS
+    ]
 
 class Promotion:
     """
