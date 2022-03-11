@@ -27,17 +27,18 @@ class Basket:
 
     def reduce_product_quantity(self, product, qty):
         for p in self.products:
-            if product.name == p.name:
+            if product == p.name:
                 p.reduce_quantity(qty)
 
     def calculate_free(self):
         for f_prom in [p for p in self.promotions if p.type == 'free']:
             for prod in self.products:
-
-                num_promotions = prod.quantity // f_prom.qualifying_qty
-                reduce_number = num_promotions * f_prom.discount_qty
-                print('reducer qty number', reduce_number)
-                self.reduce_product_quantity(prod, reduce_number)
+                if f_prom.qualifying_product == prod.name:
+                    print(f_prom)
+                    num_promotions = prod.quantity // f_prom.qualifying_qty
+                    reduce_number = num_promotions * f_prom.discount_qty
+                    print('reducer qty number', reduce_number)
+                    self.reduce_product_quantity(f_prom.discount_product, reduce_number)
 
     @property
     def calculate_discounts(self):
@@ -52,5 +53,6 @@ class Basket:
         return total_discount
                     
                     
+
 
 

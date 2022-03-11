@@ -22,7 +22,7 @@ PROMOTIONS = [
     },
     {
         'qualifying_product': 'E',
-        'qualifying_qty': 5,
+        'qualifying_qty': 2,
         'type': 'free',
         'discount_product': 'B',
         'discount_qty': 1
