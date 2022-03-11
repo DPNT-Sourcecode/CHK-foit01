@@ -7,8 +7,8 @@ from .product import create_products
 def checkout(skus):
 
     products = create_products(skus)
+    print(products)
     
-    create_products(skus)
     return 0
 
     

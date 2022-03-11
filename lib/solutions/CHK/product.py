@@ -9,7 +9,7 @@ PRODUCTS = {
 
 def create_products(skus: str) ->  list:
     count = {s: skus.count(s) for s in set(skus)}
-    print(count)
+    return [Product(name, qty) for (name, qty) in count.items()]
 
 
 
@@ -21,5 +21,8 @@ class Product:
         self.quantity = quantity
 
     def __str__(self):
-        return f'{self.name} (£{self.price}'
+        return f'{self.name} (£{self.price})'
+
+    def __repr__(self):
+        return f'{self.name} (£{self.price})'
 
