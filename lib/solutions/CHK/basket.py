@@ -47,6 +47,11 @@ class Basket:
         for c_prom in [p for p in self.promotions if p.type == 'cumulative']:
             for prod in self.products:
                 if c_prom.qualifying_product == prod.name:
+                    if prod.has_promotion:
+                        self.reduce_product_quantity(
+                            prod.name,
+                            prod.promotion.qualifying_qty
+                        )
                     num_promotions = prod.quantity // c_prom.qualifying_qty
                     total_discount += num_promotions * c_prom.discount_qty
         print(f'total discount {total_discount}')
