@@ -25,10 +25,15 @@ class Basket:
     def get_total_price(self):
         return sum([p.quantity * p.price for p in self.products]) - self.calculate_discounts
 
+    def reduce_product_quantity(self, product, qty):
+        pass
+
     def calculate_free(self):
         for f_prom in [p for p in self.promotions if p.type == 'free']:
             for prod in self.products:
-
+                num_promotions = prod.quantity // f_prom.qualifying_qty
+                reduce_number = num_promotions * f_prom.discount_qty
+                self.reduce_product_quantity(prod, reduce_number)
 
     @property
     def calculate_discounts(self):
@@ -37,12 +42,13 @@ class Basket:
         for prom in self.promotions:
             for prod in self.products:
                 if prom.qualifying_product == prod.name:
-                    num_promotions = prod.quantity // prom.qualifying_qty
+                    
                     
                     elif prom.type == 'free':
                         total_qty_reduce
         return total_discount
                     
                     
+
 
 
