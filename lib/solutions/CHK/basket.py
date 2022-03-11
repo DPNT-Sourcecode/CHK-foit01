@@ -60,7 +60,3 @@ class Basket:
         return total_discount
                     
                     
-
-
-
-

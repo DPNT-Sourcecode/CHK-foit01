@@ -40,4 +40,3 @@ class Product:
     @property
     def has_promotion(self):
         return self.promotion is not None
-

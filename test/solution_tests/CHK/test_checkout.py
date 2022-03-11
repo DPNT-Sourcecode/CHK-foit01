@@ -11,4 +11,3 @@ def test_checkout_solution():
     assert checkout_solution.checkout('AAAAAAAAA') == 400
     
 
-
