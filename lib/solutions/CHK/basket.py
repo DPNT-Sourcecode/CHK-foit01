@@ -18,15 +18,23 @@ class Basket:
     def __init__(self, products, promotions):
         self.products = products
         self.promotions = promotions
-        self.discounts = 0
 
 
     @property
     def get_total_price(self):
-        return sum([p.quantity * p.price for p in self.products]) - self.discounts
+        return sum([p.quantity * p.price for p in self.products]) - self.calculate_discounts
 
-    
+    @property
     def calculate_discounts(self):
+        total_discount = 0
 
         for prom in self.promotions:
-            continue
+            for prod in self.products:
+                if prom.qualifying_product == prod.name:
+                    if prom.type == 'free':
+
+                        num_promotions = prod.quantity // prom.qualifying_qty
+
+                        
+                    
+                    
