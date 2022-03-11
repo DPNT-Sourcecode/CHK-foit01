@@ -4,15 +4,20 @@
 # skus = unicode string
 from .product import create_products
 from .promotion import create_promotions
+from .basket import Basket
 
 def checkout(skus):
 
-    products = create_products(skus)
+    try:
+        products = create_products(skus)
+    except KeyError:
+        return -1
     promotions = create_promotions()
-    print(products)
-    print(promotions)
+
+    basket = Basket(products, promotions)
     
-    return 0
+    return basket.get_total_price
 
     
+
 
