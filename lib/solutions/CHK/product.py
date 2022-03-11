@@ -8,7 +8,8 @@ PRODUCTS = {
 
 
 def create_products(skus: str) ->  list:
-
+    count = {s: skus.count(s) for s in set(skus)}
+    print()
 
 
 
