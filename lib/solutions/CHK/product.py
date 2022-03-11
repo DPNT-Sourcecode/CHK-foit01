@@ -27,4 +27,8 @@ class Product:
         return f'{self.name} (£{self.price})'
 
     def reduce_quantity(self, quantity):
-        self.quantity -= quantity
+        new_qty = self.quantity - quantity
+        if new_qty < 0:
+            self.quantity = 0
+        else:
+            self.quantity = new_qty
