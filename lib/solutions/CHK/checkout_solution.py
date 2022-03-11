@@ -15,9 +15,9 @@ def checkout(skus):
     promotions = create_promotions()
 
     basket = Basket(products, promotions)
+    print(products)
     
     return basket.get_total_price
 
     
-
 

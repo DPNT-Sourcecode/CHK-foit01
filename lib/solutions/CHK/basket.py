@@ -26,7 +26,9 @@ class Basket:
         return sum([p.quantity * p.price for p in self.products]) - self.calculate_discounts
 
     def reduce_product_quantity(self, product, qty):
-        pass
+        for p in self.products:
+            if product.name == p.name:
+                p.reduce_quantity()
 
     def calculate_free(self):
         for f_prom in [p for p in self.promotions if p.type == 'free']:
@@ -39,16 +41,12 @@ class Basket:
     def calculate_discounts(self):
         total_discount = 0
 
-        for prom in self.promotions:
+        for c_prom in [p for p in self.promotions if p.type == 'cumulative']:
             for prod in self.products:
-                if prom.qualifying_product == prod.name:
-                    
-                    
-                    elif prom.type == 'free':
-                        total_qty_reduce
+                if c_prom.qualifying_product == prod.name:
+                    num_promotions = prod.quantity // c_prom.qualifying_qty
+                    total_discount += num_promotions * c_prom.discount_qty
+        print(f'total discount {total_discount}')
         return total_discount
                     
                     
-
-
-
