@@ -19,6 +19,7 @@ class Product:
         self.name = PRODUCTS[name]['name']
         self.price = PRODUCTS[name]['price']
         self.quantity = quantity
+        self._promotion = None
 
     def __str__(self):
         return f'{self.quantity}{self.name} (£{self.price})'
@@ -32,3 +33,11 @@ class Product:
             self.quantity = 0
         else:
             self.quantity = new_qty
+
+    def apply_promotion(self, promotion):
+        self._promotion = promotion
+
+    @property
+    def has_promotion(self):
+        return self._promotion is not None
+
