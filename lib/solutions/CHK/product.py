@@ -9,7 +9,7 @@ PRODUCTS = {
 
 def create_products(skus: str) ->  list:
     count = {s: skus.count(s) for s in set(skus)}
-    print()
+    print(count)
 
 
 
@@ -22,3 +22,4 @@ class Product:
 
     def __str__(self):
         return f'{self.name} (£{self.price}'
+
