@@ -1,7 +1,32 @@
 PROMOTIONS = [
     {
-        
-    }
+        'qualifying_product': 'A',
+        'qualifying_qty': 5,
+        'type': 'cumulative',
+        'discount_product': 'A',
+        'discount_qty': 50
+    },
+    {
+        'qualifying_product': 'A',
+        'qualifying_qty': 3,
+        'type': 'cumulative',
+        'discount_product': 'A',
+        'discount_qty': 20
+    },
+    {
+        'qualifying_product': 'B',
+        'qualifying_qty': 2,
+        'type': 'cumulative',
+        'discount_product': 'AB',
+        'discount_qty': 15
+    },
+    {
+        'qualifying_product': 'E',
+        'qualifying_qty': 5,
+        'type': 'free',
+        'discount_product': 'B',
+        'discount_qty': 1
+    },
 ]
 
 class Promotion:
@@ -17,5 +42,9 @@ class Promotion:
     | E    | 40    | 2E get one B free      |
     +------+-------+------------------------+
     """
-    def __init__(self):
-        pass
+    def __init__(self, qualifying_product, qualifying_qty, type, discount_product, discount_qty):
+        self.qualifying_product = qualifying_product
+        self.qualifying_qty = qualifying_qty
+        self.type = type
+        self.discount_product = discount_product
+        self.discount_qty = discount_qty
